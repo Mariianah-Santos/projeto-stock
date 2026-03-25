@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+@use "styles/variables" as var;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    // font-family: "Poppins", sans-serif;
+    
+}
+
+body {
+    background-color: var.$bgMain;
+}
+
+// .main {
+//     margin: 0 100px 0 100px;
+// }7
+.tooltip-productList {
+  background-color: var.$line;
+  border-radius: 2px;
+  color: var.$textMain;
+  font-size: 14px;
+  max-width: 300px;
+  width: auto;
+  white-space: normal;
+}
+
+#btn-delete {
+    color: var.$del;
+    margin-left: 15px;
+    cursor: pointer;
+
+    &:hover {
+        color: var.$delHover;
+    }
+}
+
+#btn-edit {
+    color: var.$edit;
+    margin-left: 10px;
+    cursor: pointer;
+
+    &:hover {
+        color: var.$editHover;
+    }
+}

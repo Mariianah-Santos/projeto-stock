@@ -1,0 +1,78 @@
+<main class="main">
+    <section class="section-1-header">
+        <h3>Produtos</h3>
+        <div class="btn-header">
+            <div class="search-group">
+                <div class="input-false-div">
+                    <input type="text" placeholder="Pesquisar Produto">
+                </div>
+
+                <button class="btn-search btn">Buscar</button>
+            </div>
+            
+            <div class="btn-header-productList">
+                <button class="btn-filter btn"><mat-icon>filter_list</mat-icon> Filtros</button>
+                <button class="btn-add btn" routerLink="/productAdd"><mat-icon>add</mat-icon>Adicionar</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-2-table">
+        <table class="table-productList">
+            <thead class="table-header">
+                <tr id="tr-header">
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Categoria</th>
+                    <th>Unidade</th>
+                    <th>Preço</th>
+                    <th>Data de Criação</th>
+                    <th>Responsável</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody class="table-tbody">
+                <tr>
+                    <td>12312</td>
+                    <td>Notebook</td>
+                    <td>Eletronico</td>
+                    <td>3</td>
+                    <td>R$3.999</td>
+                    <td>12/02/2023</td>
+                    <td>Mariza Monte</td>
+                    <td>
+                        <mat-icon>edit</mat-icon>
+                        <mat-icon>delete</mat-icon>
+                    </td>
+                </tr>
+                <tr>
+                    <td>12312</td>
+                    <td>Notebook</td>
+                    <td>Eletronico</td>
+                    <td>3</td>
+                    <td>R$3.999</td>
+                    <td>12/02/2023</td>
+                    <td>Danilo Garcia</td>
+                    <td>
+                        <mat-icon>edit</mat-icon>
+                        <mat-icon>delete</mat-icon>
+                    </td>
+                </tr>
+                <tr>
+                    <td>12312</td>
+                    <td>Notebook</td>
+                    <td>Eletronico</td>
+                    <td>3</td>
+                    <td>R$3.999</td>
+                    <td>12/02/2023</td>
+                    <td matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="Texto completo aqui">Pedro guilherme guilherme guilherme</td>
+                    <td class="btn-action btn">
+                        <mat-icon id="btn-edit">edit</mat-icon>
+                        <mat-icon id="btn-delete">delete</mat-icon>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>

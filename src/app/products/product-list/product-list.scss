@@ -1,0 +1,190 @@
+@use "../../../styles/variables" as var;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+// header product
+
+.main {
+    margin: 0 100px 0 100px;
+    font-family: "Inter", sans-serif;
+}
+
+.section-1-header {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    h3 {
+        margin-top: 2rem;
+        font-size: 36px;
+        font-weight: bold;
+    }
+
+    .btn-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .search-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        button {
+            background-color: var.$hoverBlue;
+            cursor: pointer;
+            border: none;
+            padding: 10px;
+            color: var.$card;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+
+           
+        }
+
+        .btn-search:hover {
+            background-color: var.$BlueDark;
+        }
+
+    }
+
+    .input-false-div {
+        display: flex;
+        align-items: center;
+        background-color: var.$card;
+        width: 350px;
+        max-width: 100%;
+        height: 40px;
+        border-radius: 10px;
+
+        input {
+            margin-left: 20px;
+            border: none;
+            height: 30px;
+            width: 100%;
+            outline: none;
+        }
+    }
+
+    .btn-header-productList {
+        display: flex;
+        gap: 10px;
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            
+        }
+
+        .btn-filter {
+            background-color: var.$card;
+
+            mat-icon {
+                font-size: 14px;
+                height: 12px;
+            }
+
+        }
+
+        .btn-add {
+            background-color: var.$hoverBlue;
+            color: var.$card;
+            align-items: center;
+
+            mat-icon {
+                font-weight: bold;
+                font-size: 14px;
+                height: 12px;
+                
+            }
+
+            
+        }
+
+        .btn-add:hover {
+            background-color: var.$BlueDark; 
+        }
+
+    }
+}
+
+
+.input-false-div:focus-within {
+    box-shadow: 0 0 0 0.8px var.$BlueDark;
+}
+
+
+::placeholder {
+    font-style: italic;
+}
+
+
+
+// table
+
+.section-2-table {
+    height: auto;
+    margin-top: 2rem;
+    border-radius: 20px;
+    background-color: var.$card;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    
+    overflow: hidden;
+
+    .table-productList {
+        width: 100%;
+        table-layout: fixed;
+        display: table;
+        background-color: var.$theader;
+        border-radius: 20px;
+        border-collapse: collapse;
+
+        .table-header {
+            font-size: 14px;
+            font-weight: 100;
+            color: var.$textMain;
+            
+            th {
+                border-right: 1px solid var.$line;
+                text-align: left;
+                padding-left: .5rem;
+                height: 40px;
+                border-bottom: 2px solid var.$line;
+                max-width: 150px; 
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .table-tbody {
+            width: 100%;
+            border-radius: 20px;
+
+            td {
+                font-size: 13px;
+                background-color: var.$card;
+                padding-left: .5rem;
+                height: 50px;
+                font-weight: 500;
+                border-bottom: 1px solid var.$line;
+                border-right: 1px solid var.$line;
+                width: auto;
+                max-width: 150px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                
+            }
+
+            tr:nth-child(even) td {
+                background-color: var.$theader;
+            }
+
+        }
+    }
+}

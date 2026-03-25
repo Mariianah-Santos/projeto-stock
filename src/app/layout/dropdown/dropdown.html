@@ -1,0 +1,6 @@
+<ul class="dropdown-menu" *ngIf="isOpen">
+  <li *ngFor="let item of items" (click)="clickItem(item)">
+    <mat-icon *ngIf="item.icon" class="icone">{{ item.icon }}</mat-icon>
+    <span class="icone">{{ item.label }}</span>
+  </li>
+</ul>

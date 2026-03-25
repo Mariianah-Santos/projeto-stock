@@ -1,0 +1,25 @@
+<header class="headerBar">
+  <nav class="headerBar-navbar">
+    <div class="headerBar-navbar-log">
+        <div class="headerBar-navbar-img">
+            <img src="" alt="Logo">
+        </div>
+        <h2>Empresa</h2>
+    </div>
+
+    <ul class="headerBar-navbar-dropdown">
+        <!-- <li class="dropdown-trigger hover-item"><mat-icon>add</mat-icon></li> -->
+        <li class="hover-item"><a routerLink="/adm">Administração</a></li>
+        <li class="hover-item"><a href="#" target="_blank">Dashboard</a></li>
+        <li class="hover-item"><a routerLink="/log">Log</a></li>
+        <li class="hover-item"><a href="#">Produtos</a></li>
+    </ul>
+
+    <div class="headerBar-perfil"  (click)="toggleDropdownImg()">
+        <div class="headerBar-perfil-img">
+            <img src="" alt="perfil">
+        </div>
+        <app-dropdown [items]="perfilItems" class="perfil-dropdown" [isOpen]="dropdownOpenImg"></app-dropdown>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,64 @@
+<main class="main">
+    <section class="section-1-header">
+        <h3>Usuários Internos</h3>
+        <div class="btn-header">
+            <div class="search-group">
+                <div class="input-false-div">
+                    <input type="text" placeholder="Pesquisar usuário">
+                </div>
+
+                <button class="btn-search btn">Buscar</button>
+            </div>
+            
+            <div class="btn-header-productList">
+                <button class="btn-filter btn"><mat-icon>filter_list</mat-icon> Filtros</button>
+                <button class="btn-add btn"><mat-icon>person_add</mat-icon>Adicionar</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-2-table">
+        <table class="table-productList">
+            <thead class="table-header">
+                <tr id="tr-header">
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody class="table-tbody">
+                <tr>
+                    <td>12312</td>
+                    <td matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="Texto completo aqui">Mariza Monte</td>
+                    <td>monte@gmail.com</td>
+                    <td>81983180058</td>
+                    <td>Ativo</td>
+                     <td class="btn-action btn">
+                        <button (click)="toggleDropdownImg()">
+                            <mat-icon class="more-vert">more_vert</mat-icon>
+                        </button>
+                        <app-dropdown [items]="perfilItems" class="dropdown-users"  [isOpen]="dropdownOpenImg"></app-dropdown>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>12312</td>
+                    <td matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="Texto completo aqui">Mariza Monte</td>
+                    <td>monte@gmail.com</td>
+                    <td>81983180058</td>
+                    <td>Ativo</td>
+                     <td class="btn-action btn">
+                        <button (click)="toggleDropdownImg()">
+                            <mat-icon class="more-vert">more_vert</mat-icon>
+                        </button>
+                        <app-dropdown [items]="perfilItems" class="dropdown-users"  [isOpen]="dropdownOpenImg"></app-dropdown>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>

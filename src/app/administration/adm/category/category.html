@@ -1,0 +1,44 @@
+<main class="main">
+    <section class="section-1-header">
+        <h3>Categorias</h3>
+        <div class="btn-header">
+            <div class="search-group">
+                <div class="input-false-div">
+                    <input type="text" placeholder="Pesquisar Categoria">
+                </div>
+
+                <button class="btn-search btn">Buscar</button>
+            </div>
+            
+            <div class="btn-header-productList">
+                <button class="btn-filter btn"><mat-icon>filter_list</mat-icon> Filtros</button>
+                <button class="btn-add btn" (click)="showModal()"><mat-icon>add</mat-icon>Adicionar</button>
+            </div>
+
+            <app-category-add-modal [isOpen]="open" (closeModal)="closeModal()"></app-category-add-modal>
+        </div>
+    </section>
+
+    <section class="section-2-table">
+        <table class="table-productList">
+            <thead class="table-header">
+                <tr id="tr-header">
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+
+            <tbody class="table-tbody">
+                <tr>
+                    <td>12</td>
+                    <td>Game</td>
+                    <td class="btn-action btn">
+                        <mat-icon id="btn-edit">edit</mat-icon>
+                        <mat-icon id="btn-delete">delete</mat-icon>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
