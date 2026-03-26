@@ -13,9 +13,23 @@ import { Adm } from './administration/adm/adm';
 import { Users } from './administration/adm/users/users';
 import { Category } from './administration/adm/category/category';
 import { CategoryAddModal } from './administration/adm/category-add-modal/category-add-modal';
+import { ProductEdit } from './products/product-edit/product-edit';
+import { ProductDelete } from './products/product-delete/product-delete';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
-  declarations: [App, ProductList, ProductAdd, Log, Adm, Users, Category, CategoryAddModal],
+  declarations: [
+    App,
+    ProductList,
+    ProductAdd,
+    Log,
+    Adm,
+    Users,
+    Category,
+    CategoryAddModal,
+    ProductEdit,
+    ProductDelete,
+  ],
   imports: [
     BrowserModule,
     CommonModule,
@@ -23,6 +37,7 @@ import { CategoryAddModal } from './administration/adm/category-add-modal/catego
     LayoutModule,
     MatIconModule,
     MatTooltipModule,
+    MatPaginatorModule,
   ],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],

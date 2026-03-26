@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
   styleUrl: './product-list.scss',
 
 })
-export class ProductList {}
+export class ProductList {
+
+
+  open = false;
+
+  closeModal() {
+    this.open = false;
+  }
+
+  showModal() {
+    this.open = true;
+  }
+}

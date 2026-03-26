@@ -1,0 +1,33 @@
+<div class="main" *ngIf="isOpen">
+    <div class="container-modal">
+        <div class="modal-header">
+            <h3>Deleta Produto</h3>
+            <span (click)="close()">X</span>
+        </div>
+
+        <div class="modal-body">
+            <table class="table-productList">
+                <thead class="table-header">
+                    <tr id="tr-header">
+                        <th>Código</th>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                    </tr>
+                </thead>
+
+                <tbody class="table-tbody disabledDiv">
+                    <tr>
+                        <td>12312</td>
+                        <td>Notebook</td>
+                        <td>Eletronico</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="modal-footer">
+                <button id="btn-cancel" (click)="close()" class="btn">Cancelar</button>
+                <button id="btn-del" class="btn">Deleta</button>
+            </div>
+        </div>
+    </div>
+</div>

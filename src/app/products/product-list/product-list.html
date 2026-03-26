@@ -68,11 +68,13 @@
                     <td>12/02/2023</td>
                     <td matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="Texto completo aqui">Pedro guilherme guilherme guilherme</td>
                     <td class="btn-action btn">
-                        <mat-icon id="btn-edit">edit</mat-icon>
-                        <mat-icon id="btn-delete">delete</mat-icon>
+                        <mat-icon id="btn-edit" routerLink="/productEdit">edit</mat-icon>
+                        <mat-icon id="btn-delete" (click)="showModal()" routerLink="/productDelete">delete</mat-icon>
+                        <app-product-delete [isOpen]="open" (closeModal)="closeModal()"></app-product-delete>
                     </td>
                 </tr>
             </tbody>
         </table>
     </section>
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </main>

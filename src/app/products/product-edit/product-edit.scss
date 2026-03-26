@@ -135,10 +135,14 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .disabledDiv {
-    padding-left: 1rem;
-    padding-top: .6rem;
     background-color: var.$theader;
     font-style: italic;
     border-color: var.$theader !important;
     color: var.$textSecudanry;
+
+    p {
+        text-align: center;
+        margin-top: 8px;
+        font-size: 14px;
+    }
 }

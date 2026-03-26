@@ -7,6 +7,8 @@ import { Log } from './log/log';
 import { Adm } from './administration/adm/adm';
 import { Users } from './administration/adm/users/users';
 import { Category } from './administration/adm/category/category';
+import { ProductEdit } from './products/product-edit/product-edit';
+import { ProductDelete } from './products/product-delete/product-delete';
 
 const routes: Routes = [ 
   { path: "",
@@ -15,12 +17,19 @@ const routes: Routes = [
 
       {
         path: '',
-        component: ProductList
+        component: ProductList, 
       },
 
       {
         path: 'product',
-        component: ProductList
+        component: ProductList,
+
+        children: [
+            {
+              path: 'productDelete',
+              component: ProductDelete
+            }
+        ]
       },
 
       {
@@ -45,8 +54,11 @@ const routes: Routes = [
               component: Category
             }
         ]
+      },
+      {
+        path: 'productEdit',
+        component: ProductEdit
       }
-
     ]
   }
 ];
