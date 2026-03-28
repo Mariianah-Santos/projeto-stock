@@ -1,0 +1,34 @@
+<div class="main" *ngIf="isOpen">
+    <div class="container-modal">
+        <div class="modal-header">
+            <h3>Alterar Usuário</h3>
+            <span (click)="close()">X</span>
+        </div>
+        <hr id="line-header">
+
+        <div class="modal-body">
+            <label for="name">Nome</label>
+            <div class="input-false-div">
+                <mat-icon class="user-mat">person</mat-icon>
+                <input type="text" id="name" placeholder="Nome">
+            </div>
+
+             <label for="email">Email</label>
+            <div class="input-false-div">
+                <mat-icon class="user-mat">email</mat-icon>
+                <input type="email" id="email" placeholder="email@gmail.com">
+            </div>
+
+             <label for="tel">Telefone</label>
+            <div class="input-false-div">
+                <mat-icon class="user-mat">call</mat-icon>
+                <input type="number" id="tel" placeholder="(xx)xxxxxxxx">
+            </div>
+
+            <div class="modal-footer">
+                <button id="btn-cancel" class="btn" (click)="close()">Cancelar</button>
+                <button id="btn-add" class="btn">Adicionar</button>
+            </div>
+        </div>
+    </div>
+</div>

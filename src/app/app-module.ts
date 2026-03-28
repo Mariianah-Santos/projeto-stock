@@ -16,6 +16,11 @@ import { CategoryAddModal } from './administration/adm/category-add-modal/catego
 import { ProductEdit } from './products/product-edit/product-edit';
 import { ProductDelete } from './products/product-delete/product-delete';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { UserAdd } from './administration/adm/user-add/user-add';
+import { UserEdit } from './administration/adm/user-edit/user-edit';
+import { UserDelete } from './administration/adm/user-delete/user-delete';
+import { CategoryEdit } from './administration/adm/category-edit/category-edit';
+import { CategoryDelete } from './administration/adm/category-delete/category-delete';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     CategoryAddModal,
     ProductEdit,
     ProductDelete,
+    UserAdd,
+    UserEdit,
+    UserDelete,
+    CategoryEdit,
+    CategoryDelete,
   ],
   imports: [
     BrowserModule,

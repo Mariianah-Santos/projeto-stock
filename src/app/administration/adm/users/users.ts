@@ -19,8 +19,26 @@ export class Users {
     { label: 'Desativa', icon: 'check'}
   ];
 
+  open = false;
+  openEdit = false;
   dropdownOpenImg = false;
   toggleDropdownImg() {
     this.dropdownOpenImg = !this.dropdownOpenImg;
+  }
+
+  showModal() {
+    this.open = true;
+  }
+
+  closeModal() {
+    this.open = false;
+  }
+
+  closeModalEdit() {
+    this.openEdit = false;
+  }
+
+  showModalEdit() {
+    this.openEdit = true;
   }
 }

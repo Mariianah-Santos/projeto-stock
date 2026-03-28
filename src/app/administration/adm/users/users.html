@@ -12,11 +12,11 @@
             
             <div class="btn-header-productList">
                 <button class="btn-filter btn"><mat-icon>filter_list</mat-icon> Filtros</button>
-                <button class="btn-add btn"><mat-icon>person_add</mat-icon>Adicionar</button>
+                <button class="btn-add btn" routerLink="/userAdd" (click)="showModal()"><mat-icon>person_add</mat-icon>Adicionar</button>
             </div>
         </div>
     </section>
-
+    
     <section class="section-2-table">
         <table class="table-productList">
             <thead class="table-header">
@@ -62,3 +62,5 @@
         </table>
     </section>
 </main>
+<app-user-add [isOpen]="open" (closeModal)="closeModal()"></app-user-add>
+<app-user-edit [isOpen]="openEdit" (closeModal)="closeModalEdit()"></app-user-edit>
