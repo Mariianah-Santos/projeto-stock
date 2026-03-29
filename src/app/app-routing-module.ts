@@ -6,7 +6,7 @@ import { ProductAdd } from './products/product-add/product-add';
 import { Log } from './log/log';
 import { Adm } from './administration/adm/adm';
 import { Users } from './administration/adm/users/users';
-import { Category } from './administration/adm/category/category';
+import { CategoryList } from './administration/adm/category-list/category-list';
 import { ProductEdit } from './products/product-edit/product-edit';
 import { ProductDelete } from './products/product-delete/product-delete';
 import { UserAdd } from './administration/adm/user-add/user-add';
@@ -55,8 +55,8 @@ const routes: Routes = [
               component: Users
             },
             {
-              path: 'category',
-              component: Category
+              path: 'categoryList',
+              component: CategoryList
             },
             {
               path: 'userAdd',

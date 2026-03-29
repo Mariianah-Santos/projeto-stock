@@ -25,32 +25,18 @@
                     <th>Nome</th>
                     <th>Email</th>
                     <th>Telefone</th>
-                    <th>Status</th>
+                    <th>Ativo</th>
                     <th>Ações</th>
                 </tr>
             </thead>
 
             <tbody class="table-tbody">
-                <tr>
-                    <td>12312</td>
-                    <td matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="Texto completo aqui">Mariza Monte</td>
-                    <td>monte@gmail.com</td>
-                    <td>81983180058</td>
-                    <td>Ativo</td>
-                     <td class="btn-action btn">
-                        <button (click)="toggleDropdownImg()">
-                            <mat-icon class="more-vert">more_vert</mat-icon>
-                        </button>
-                        <app-dropdown [items]="perfilItems" class="dropdown-users"  [isOpen]="dropdownOpenImg"></app-dropdown>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>12312</td>
-                    <td matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="Texto completo aqui">Mariza Monte</td>
-                    <td>monte@gmail.com</td>
-                    <td>81983180058</td>
-                    <td>Ativo</td>
+                <tr *ngFor="let responsible of dataSource.connect() | async">
+                    <td> {{ responsible.id }} </td>
+                    <td matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="{{ responsible.name }}"> {{ responsible.name }} </td>
+                    <td>{{ responsible.email }}</td>
+                    <td> {{ responsible.telefone }} </td>
+                    <td> {{ responsible.active }} </td>
                      <td class="btn-action btn">
                         <button (click)="toggleDropdownImg()">
                             <mat-icon class="more-vert">more_vert</mat-icon>
@@ -61,6 +47,13 @@
             </tbody>
         </table>
     </section>
+    <section class="container-oculto" *ngIf="dataSource.data.length === 0">
+        <div class="box-oculto">
+            <h3>Lista de Usuários está vazia no momento</h3>
+            <p>Cadastre usuários para começar a gerenciar seu estoque</p>
+        </div>
+    </section>
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </main>
 <app-user-add [isOpen]="open" (closeModal)="closeModal()"></app-user-add>
 <app-user-edit [isOpen]="openEdit" (closeModal)="closeModalEdit()"></app-user-edit>

@@ -30,9 +30,9 @@
             </thead>
 
             <tbody class="table-tbody">
-                <tr>
-                    <td>12</td>
-                    <td>Game</td>
+                <tr  *ngFor="let category of dataSource.connect() | async">
+                    <td> {{ category.id }} </td>
+                    <td> {{ category.name }} </td>
                     <td class="btn-action btn">
                         <mat-icon id="btn-edit">edit</mat-icon>
                         <mat-icon id="btn-delete">delete</mat-icon>
@@ -41,4 +41,11 @@
             </tbody>
         </table>
     </section>
+    <section class="container-oculto" *ngIf="dataSource.data.length === 0">
+        <div class="box-oculto">
+            <h3>Lista de Categoria está vazia no momento</h3>
+            <p>Cadastre uma categoria para começar a gerenciar seu estoque</p>
+        </div>
+    </section>
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </main>

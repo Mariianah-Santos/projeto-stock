@@ -3,24 +3,39 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
+
+// imports do view module
 import { LayoutModule } from './layout/layout-module';
+
+// imports do product
 import { ProductList } from './products/product-list/product-list';
-import { MatIconModule } from '@angular/material/icon';
+import { ProductEdit } from './products/product-edit/product-edit';
+import { ProductDelete } from './products/product-delete/product-delete';
 import { ProductAdd } from './products/product-add/product-add';
-import { MatTooltipModule } from '@angular/material/tooltip';
+
+// import do adm
 import { Log } from './log/log';
 import { Adm } from './administration/adm/adm';
 import { Users } from './administration/adm/users/users';
-import { Category } from './administration/adm/category/category';
+
+// imports de categoria
+import { CategoryList } from './administration/adm/category-list/category-list';
 import { CategoryAddModal } from './administration/adm/category-add-modal/category-add-modal';
-import { ProductEdit } from './products/product-edit/product-edit';
-import { ProductDelete } from './products/product-delete/product-delete';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { CategoryEdit } from './administration/adm/category-edit/category-edit';
+import { CategoryDelete } from './administration/adm/category-delete/category-delete';
+
+// import dos users
 import { UserAdd } from './administration/adm/user-add/user-add';
 import { UserEdit } from './administration/adm/user-edit/user-edit';
 import { UserDelete } from './administration/adm/user-delete/user-delete';
-import { CategoryEdit } from './administration/adm/category-edit/category-edit';
-import { CategoryDelete } from './administration/adm/category-delete/category-delete';
+
+// imports do Material
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +45,6 @@ import { CategoryDelete } from './administration/adm/category-delete/category-de
     Log,
     Adm,
     Users,
-    Category,
     CategoryAddModal,
     ProductEdit,
     ProductDelete,
@@ -39,6 +53,7 @@ import { CategoryDelete } from './administration/adm/category-delete/category-de
     UserDelete,
     CategoryEdit,
     CategoryDelete,
+    CategoryList,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +63,8 @@ import { CategoryDelete } from './administration/adm/category-delete/category-de
     MatIconModule,
     MatTooltipModule,
     MatPaginatorModule,
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],

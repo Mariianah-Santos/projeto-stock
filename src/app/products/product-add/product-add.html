@@ -5,7 +5,7 @@
             <div class="box-input-info">
                 <label for="name">Nome do Produto</label>
                 <div class="input-false-div">
-                    <input type="text" name="" id="name" placeholder="Digite o nome do Produto">
+                    <input type="text" [(ngModel)]="product.name" name="" id="name" placeholder="Digite o nome do Produto">
                 </div>
                 
             </div>
@@ -13,7 +13,13 @@
             <div class="box-input-info">
                 <label for="category">Categoria</label>
                 <div class="input-false-div">
-                    <input type="text" name="" id="category" placeholder="Qual a categoria do Produto">
+                    <select name="" id="" class="select">
+                        <option value="" disabled selected>Selecione uma categoria</option>
+                        <option *ngFor="let category of categorys" [(ngModel)]="category.id">
+                           {{ category.id }} - {{ category.name }}
+                        </option>
+                    </select>
+                    <!-- <input type="" name="" id="category" placeholder="Qual a categoria do Produto"> -->
                 </div>
             </div>
 
@@ -23,14 +29,14 @@
                     <div class="input-group">
                         <label for="unid">Unidade</label>
                         <div class="input-false-div">
-                            <input type="number" id="unid" placeholder="Quantidades do produto">
+                            <input type="number" [(ngModel)]="product.quantity" id="unid" placeholder="Quantidades do produto">
                         </div>
                     </div>
 
                     <div class="input-group">
                         <label for="price">Preço <span id="priceSpan">R$</span></label>
                         <div class="input-false-div">
-                            <input type="number" id="price" placeholder="Digite o preço do Produto">
+                            <input type="number" [(ngModel)]="product.price" id="price" placeholder="Digite o preço do Produto">
                         </div>
                     </div>
 
@@ -43,7 +49,7 @@
                     <div class="input-group">
                         <label for="unid">Data de Criação</label>
                         <div class="input-false-div disabledDiv">
-                            <span>{{ createDateProduct() }}</span>
+                            <span>{{ product.dateCreate | date: 'dd/MM/yyyy' }}</span>
                         </div>
                     </div>
 
@@ -59,7 +65,7 @@
         </div>
 
         <div class="btn btn-footer-action">
-            <button id="product-add" routerLink="/">Adicionar</button>
+            <button id="product-add" routerLink="/" (click)="addProduct()">Adicionar</button>
             <button id="product-cancel" routerLink="/">Cancelar</button>
         </div>
     </div>

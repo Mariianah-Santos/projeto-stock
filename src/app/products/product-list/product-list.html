@@ -32,41 +32,15 @@
                 </tr>
             </thead>
 
-            <tbody class="table-tbody">
+            <tbody class="table-tbody" *ngFor="let product of dataSource.connect() | async">
                 <tr>
-                    <td>12312</td>
-                    <td>Notebook</td>
-                    <td>Eletronico</td>
-                    <td>3</td>
-                    <td>R$3.999</td>
-                    <td>12/02/2023</td>
-                    <td>Mariza Monte</td>
-                    <td>
-                        <mat-icon>edit</mat-icon>
-                        <mat-icon>delete</mat-icon>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12312</td>
-                    <td>Notebook</td>
-                    <td>Eletronico</td>
-                    <td>3</td>
-                    <td>R$3.999</td>
-                    <td>12/02/2023</td>
-                    <td>Danilo Garcia</td>
-                    <td>
-                        <mat-icon>edit</mat-icon>
-                        <mat-icon>delete</mat-icon>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12312</td>
-                    <td>Notebook</td>
-                    <td>Eletronico</td>
-                    <td>3</td>
-                    <td>R$3.999</td>
-                    <td>12/02/2023</td>
-                    <td matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="Texto completo aqui">Pedro guilherme guilherme guilherme</td>
+                    <td> {{ product.code }} </td>
+                    <td matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="{{product.name}}"> {{ product.name }} </td>
+                    <td> {{ product.category?.name }} </td>
+                    <td> {{ product.quantity }} </td>
+                    <td> R$ {{ product.price }} </td>
+                    <td> {{ product.dateCreate }} </td>
+                    <td  matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="{{product.responsible?.name}}"> {{ product.responsible?.name }} </td>
                     <td class="btn-action btn">
                         <mat-icon id="btn-edit" routerLink="/productEdit">edit</mat-icon>
                         <mat-icon id="btn-delete" (click)="showModal()" routerLink="/productDelete">delete</mat-icon>
@@ -76,5 +50,11 @@
             </tbody>
         </table>
     </section>
-    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <section class="container-oculto" *ngIf="dataSource.data.length === 0">
+        <div class="box-oculto">
+            <h3>Sua prateleira digital está vazia no momento</h3>
+            <p>Cadastre um item para começar a gerenciar seu estoque</p>
+        </div>
+    </section>
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </main>

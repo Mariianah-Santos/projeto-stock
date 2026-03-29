@@ -188,3 +188,27 @@
         }
     }
 }
+
+.container-oculto {
+    background-color: var.$card;
+    height: auto;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+
+    .box-oculto {
+        text-align: center;
+        font-style: italic;
+        font-size: 14px;
+        
+        h3 {
+            color: var.$textSecudanry;
+        }
+
+        p {
+            color: var.$gray-light;
+        }
+    }
+}

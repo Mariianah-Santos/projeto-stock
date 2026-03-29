@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { ResponsibleService } from '../../../services/responsible-service';
+import { Responsavel } from '../../../interface/responsavel';
+import { MatPaginator } from '@angular/material/paginator';
+import { ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface DropdownItem {
   label: string;
@@ -12,6 +17,33 @@ export interface DropdownItem {
   styleUrl: './users.scss',
 })
 export class Users {
+
+  responsibles: Responsavel[] = [];
+
+  dataSource = new MatTableDataSource<Responsavel>();
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  constructor(private responsibleService: ResponsibleService) {
+
+  }
+
+  ngOnInit() {
+    this.showListResponsible();
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
+  showListResponsible() {
+    this.responsibleService.getAllResponsible().subscribe(data => {
+      this.dataSource.data = data;
+
+      setTimeout(() => {
+        this.dataSource.paginator = this.paginator;
+      });
+    })
+  }
 
   perfilItems: DropdownItem[] = [
     { label: 'Editar', icon: 'edit' },
