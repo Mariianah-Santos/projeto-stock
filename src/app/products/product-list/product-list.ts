@@ -4,6 +4,7 @@ import { ProductService } from '../../services/product-service';
 import { MatPaginator } from '@angular/material/paginator';
 import { ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -15,6 +16,10 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ProductList {
 
   products: Product[] = [];
+  searchTerm: string = '';
+  hasProducts: boolean = false;
+  isFiltered: boolean = false;
+
   dataSource = new MatTableDataSource<Product>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -40,12 +45,28 @@ export class ProductList {
 
   loadProducts() {
       this.productService.getAllProduct().subscribe(data => {
+      this.products = data;
+      this.hasProducts = data.length > 0;
       this.dataSource.data = data;
       
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;
       });
     });
+  }
+
+  filterProduct() {
+    const term = this.searchTerm.toLowerCase();
+
+    if (term.trim() === '') {
+      this.dataSource.data = this.products;
+      this.isFiltered = false;
+    } else {
+      this.dataSource.data = this.products.filter(p => {
+        return p.name.toLocaleLowerCase().includes(term);
+      });
+      this.isFiltered = true;
+    }
   }
 
   open = false;

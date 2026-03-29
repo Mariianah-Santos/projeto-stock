@@ -19,6 +19,9 @@ export interface DropdownItem {
 export class Users {
 
   responsibles: Responsavel[] = [];
+  searchTerm: string = '';
+  isFiltered: boolean = false;
+  hasResponsible: boolean = false;
 
   dataSource = new MatTableDataSource<Responsavel>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -37,12 +40,28 @@ export class Users {
 
   showListResponsible() {
     this.responsibleService.getAllResponsible().subscribe(data => {
+      this.responsibles = data;
+      this.hasResponsible = data.length > 0;
       this.dataSource.data = data;
 
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;
       });
     })
+  }
+
+  filterResponsible() {
+    const term = this.searchTerm.toLowerCase();
+
+    if (term.trim() === '') {
+      this.dataSource.data = this.responsibles;
+      this.isFiltered = false;
+    } else {
+      this.dataSource.data = this.responsibles.filter(r => {
+        return r.name.toLocaleLowerCase().includes(term);
+      });
+      this.isFiltered = true;
+    }
   }
 
   perfilItems: DropdownItem[] = [

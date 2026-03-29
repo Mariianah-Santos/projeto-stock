@@ -4,10 +4,10 @@
         <div class="btn-header">
             <div class="search-group">
                 <div class="input-false-div">
-                    <input type="text" placeholder="Pesquisar Categoria">
+                    <input type="text" placeholder="Pesquisar Categoria" [(ngModel)]="searchTerm">
                 </div>
 
-                <button class="btn-search btn">Buscar</button>
+                <button class="btn-search btn" (click)="filterCategory()">Buscar</button>
             </div>
             
             <div class="btn-header-productList">
@@ -41,11 +41,18 @@
             </tbody>
         </table>
     </section>
-    <section class="container-oculto" *ngIf="dataSource.data.length === 0">
+    <section class="container-oculto" *ngIf="!hasCategory">
         <div class="box-oculto">
             <h3>Lista de Categoria está vazia no momento</h3>
             <p>Cadastre uma categoria para começar a gerenciar seu estoque</p>
         </div>
     </section>
+
+    <section class="container-pesquisa container-oculto" *ngIf="dataSource.data.length === 0 && isFiltered">
+        <div class="box-oculto">
+            <h3>Não encontrado na Lista</h3>
+        </div>
+    </section>
+
     <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </main>

@@ -4,14 +4,14 @@
         <div class="btn-header">
             <div class="search-group">
                 <div class="input-false-div">
-                    <input type="text" placeholder="Pesquisar Produto">
+                    <input type="text" placeholder="Pesquisar Produto" [(ngModel)]="searchTerm">
                 </div>
 
-                <button class="btn-search btn">Buscar</button>
+                <button class="btn-search btn" (click)="filterProduct()">Buscar</button>
             </div>
             
             <div class="btn-header-productList">
-                <button class="btn-filter btn"><mat-icon>filter_list</mat-icon> Filtros</button>
+                <!-- <button class="btn-filter btn"><mat-icon>filter_list</mat-icon> Filtros</button> -->
                 <button class="btn-add btn" routerLink="/productAdd"><mat-icon>add</mat-icon>Adicionar</button>
             </div>
         </div>
@@ -50,10 +50,16 @@
             </tbody>
         </table>
     </section>
-    <section class="container-oculto" *ngIf="dataSource.data.length === 0">
+    <section class="container-oculto" *ngIf="!hasProducts">
         <div class="box-oculto">
             <h3>Sua prateleira digital está vazia no momento</h3>
             <p>Cadastre um item para começar a gerenciar seu estoque</p>
+        </div>
+    </section>
+
+    <section class="container-pesquisa container-oculto" *ngIf="dataSource.data.length === 0 && isFiltered">
+        <div class="box-oculto">
+            <h3>Não encontrado na Lista</h3>
         </div>
     </section>
     <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

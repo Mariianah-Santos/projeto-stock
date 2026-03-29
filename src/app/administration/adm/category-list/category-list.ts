@@ -15,6 +15,9 @@ import { MatTableDataSource } from '@angular/material/table';
 export class CategoryList {
 
   categorys: Category[] = [];
+  searchTerm: string = '';
+  hasCategory: boolean = false;
+  isFiltered: boolean = false;
 
   dataSource = new MatTableDataSource<Category>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -33,12 +36,28 @@ export class CategoryList {
 
   categoryList() {
     this.categoryService.getAllCategory().subscribe(data => {
+      this.categorys = data;
+      this.hasCategory = data.length > 0; 
       this.dataSource.data = data;
 
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;
       });
     })
+  }
+
+  filterCategory() {
+    const term = this.searchTerm.toLocaleLowerCase();
+
+    if (term.trim() === '') {
+      this.dataSource.data = this.categorys;
+      this.isFiltered = false;
+    } else {
+      this.dataSource.data = this.categorys.filter(r => {
+        return r.name.toLocaleLowerCase().includes(term);
+      });
+      this.isFiltered = true;
+    }
   }
 
   open = false;

@@ -4,14 +4,14 @@
         <div class="btn-header">
             <div class="search-group">
                 <div class="input-false-div">
-                    <input type="text" placeholder="Pesquisar usuário">
+                    <input type="text" placeholder="Pesquisar usuário" [(ngModel)]="searchTerm">
                 </div>
 
-                <button class="btn-search btn">Buscar</button>
+                <button class="btn-search btn" (click)="filterResponsible()">Buscar</button>
             </div>
             
             <div class="btn-header-productList">
-                <button class="btn-filter btn"><mat-icon>filter_list</mat-icon> Filtros</button>
+                <!-- <button class="btn-filter btn"><mat-icon>filter_list</mat-icon> Filtros</button> -->
                 <button class="btn-add btn" routerLink="/userAdd" (click)="showModal()"><mat-icon>person_add</mat-icon>Adicionar</button>
             </div>
         </div>
@@ -34,7 +34,7 @@
                 <tr *ngFor="let responsible of dataSource.connect() | async">
                     <td> {{ responsible.id }} </td>
                     <td matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="{{ responsible.name }}"> {{ responsible.name }} </td>
-                    <td>{{ responsible.email }}</td>
+                    <td matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="{{ responsible.email }}">{{ responsible.email }}</td>
                     <td> {{ responsible.telefone }} </td>
                     <td> {{ responsible.active }} </td>
                      <td class="btn-action btn">
@@ -47,10 +47,16 @@
             </tbody>
         </table>
     </section>
-    <section class="container-oculto" *ngIf="dataSource.data.length === 0">
+    <section class="container-oculto" *ngIf="!hasResponsible">
         <div class="box-oculto">
             <h3>Lista de Usuários está vazia no momento</h3>
             <p>Cadastre usuários para começar a gerenciar seu estoque</p>
+        </div>
+    </section>
+
+    <section class="container-pesquisa container-oculto" *ngIf="dataSource.data.length === 0 && isFiltered">
+        <div class="box-oculto">
+            <h3>Não encontrado na Lista</h3>
         </div>
     </section>
     <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
