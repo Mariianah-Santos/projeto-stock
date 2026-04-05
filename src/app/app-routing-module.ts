@@ -14,11 +14,22 @@ import { UserEdit } from './administration/adm/user-edit/user-edit';
 import { UserDelete } from './administration/adm/user-delete/user-delete';
 import { CategoryEdit } from './administration/adm/category-edit/category-edit';
 import { CategoryDelete } from './administration/adm/category-delete/category-delete';
+import { Login } from './auth/login/login';
+import { authGuardGuard } from './authGuard/auth-guard-guard';
 
 const routes: Routes = [ 
-  { path: "",
+
+  {
+    path: 'login',
+    component: Login
+  },
+
+  { 
+    path: "",
     component: MainLayout,
-     children: [
+    canActivate: [authGuardGuard],
+
+    children: [
 
       {
         path: '',
@@ -30,10 +41,10 @@ const routes: Routes = [
         component: ProductList,
 
         children: [
-            {
-              path: 'productDelete',
-              component: ProductDelete
-            }
+          {
+            path: 'productDelete',
+            component: ProductDelete
+          }
         ]
       },
 
@@ -50,34 +61,34 @@ const routes: Routes = [
         component: Adm,
 
         children: [
-            {
-              path: 'users',
-              component: Users
-            },
-            {
-              path: 'categoryList',
-              component: CategoryList
-            },
-            {
-              path: 'userAdd',
-              component: UserAdd
-            }, 
-            {
-              path: 'userEdit',
-              component: UserEdit
-            },
-            {
-              path: 'userDelete',
-              component: UserDelete
-            },
-            {
-              path: 'categoryEdit',
-              component: CategoryEdit
-            },
-            {
-              path: 'categoryDelet',
-              component: CategoryDelete
-            }
+          {
+            path: 'users',
+            component: Users
+          },
+          {
+            path: 'categoryList',
+            component: CategoryList
+          },
+          {
+            path: 'userAdd',
+            component: UserAdd
+          }, 
+          {
+            path: 'userEdit',
+            component: UserEdit
+          },
+          {
+            path: 'userDelete',
+            component: UserDelete
+          },
+          {
+            path: 'categoryEdit',
+            component: CategoryEdit
+          },
+          {
+            path: 'categoryDelet',
+            component: CategoryDelete
+          }
         ]
       },
       {

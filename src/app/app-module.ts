@@ -36,6 +36,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { Login } from './auth/login/login';
+
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { FormsModule } from '@angular/forms';
     CategoryEdit,
     CategoryDelete,
     CategoryList,
+    Login
   ],
   imports: [
     BrowserModule,

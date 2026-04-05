@@ -17,7 +17,12 @@
         <div class="headerBar-perfil-img">
             <img src="" alt="perfil">
         </div>
-        <app-dropdown [items]="perfilItems" class="perfil-dropdown" [isOpen]="dropdownOpenImg"></app-dropdown>
+        <app-dropdown
+          [items]="perfilItems"
+          class="perfil-dropdown"
+          [isOpen]="dropdownOpenImg"
+          (itemClicked)="onDropdownItemClicked($event)">
+        </app-dropdown>
     </div>
   </nav>
 </header>

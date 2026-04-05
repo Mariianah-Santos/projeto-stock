@@ -1,0 +1,22 @@
+<main class="main">
+    <div class="container">
+        <h2>Entrar</h2>
+        <div class="box-input">
+            <label for="email">Email</label>
+            <div class="input-false-div">
+                <mat-icon class="user-mat">email</mat-icon>
+                <input type="email" id="email" placeholder="Escreva seu email..." [(ngModel)]="loginData.email">
+            </div>
+
+            <label for="password">Senha</label>
+            <div class="input-false-div">
+                <mat-icon class="user-mat">password</mat-icon>
+                <input type="password" id="password" placeholder="********" [(ngModel)]="loginData.password">
+            </div>
+        </div>
+
+        <div class="btn button-login">
+            <button (click)="login()">Entrar</button>
+        </div>
+    </div>
+</main>
