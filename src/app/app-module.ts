@@ -37,7 +37,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Login } from './auth/login/login';
-
+import { Loaing } from './load/loaing/loaing';
 
 @NgModule({
   declarations: [
@@ -56,7 +56,8 @@ import { Login } from './auth/login/login';
     CategoryEdit,
     CategoryDelete,
     CategoryList,
-    Login
+    Login,
+    Loaing,
   ],
   imports: [
     BrowserModule,

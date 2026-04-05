@@ -16,7 +16,10 @@
         </div>
 
         <div class="btn button-login">
-            <button (click)="login()">Entrar</button>
+            <button (click)="login()" [disabled]="!loginData.email || !loginData.password">Entrar</button>
         </div>
     </div>
 </main>
+
+<app-loaing [loading]="loading"></app-loaing>
+<p>{{ loading }}</p>

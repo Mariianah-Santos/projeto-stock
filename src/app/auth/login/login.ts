@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { LoginRequest } from '../../interface/login-request';
 import { Loginservice } from '../../services/loginservice';
 import { Router } from '@angular/router';
+import { finalize, timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,9 @@ import { Router } from '@angular/router';
 })
 export class Login {
 
-  constructor(private loginService: Loginservice, private router: Router) {}
+  constructor(private loginService: Loginservice, private router: Router, private cdr: ChangeDetectorRef) {}
 
+  loading = false;
   ngOnInit() {
     if (this.loginService.isLogged()) {
       this.router.navigate(['/']);
@@ -25,7 +27,13 @@ export class Login {
   }
 
   login() {
-     this.loginService.auth(this.loginData).subscribe({
+    this.loading = true;
+     this.loginService.auth(this.loginData).pipe(
+      finalize(() => {
+        this.loading = false;
+        this.cdr.detectChanges();
+      })
+    ).subscribe({
       next: (res) => {
         console.log('Login OK', res);
         localStorage.setItem('user', JSON.stringify(res));
