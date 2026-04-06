@@ -9,6 +9,6 @@ export interface Product {
     category?: Category,
     quantity: number,
     price: number,
-    dateCreate: Date,
+    dateCreate?: Date,
     responsible?: Responsavel
 }

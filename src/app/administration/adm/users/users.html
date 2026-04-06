@@ -61,5 +61,5 @@
     </section>
     <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </main>
-<app-user-add [isOpen]="open" (closeModal)="closeModal()"></app-user-add>
+<app-user-add (userAdded)="showListResponsible()" [isOpen]="open" (closeModal)="closeModal()"></app-user-add>
 <app-user-edit [isOpen]="openEdit" (closeModal)="closeModalEdit()"></app-user-edit>

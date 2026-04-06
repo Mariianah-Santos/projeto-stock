@@ -96,6 +96,11 @@
                     &:hover {
                         background-color: var.$BlueDark;
                     }
+
+                    &:disabled {
+                        background-color: var.$line;
+                        cursor: not-allowed;
+                    }
                 }
             }
         }

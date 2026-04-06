@@ -15,7 +15,6 @@
                 <button class="btn-add btn" (click)="showModal()"><mat-icon>add</mat-icon>Adicionar</button>
             </div>
 
-            <app-category-add-modal [isOpen]="open" (closeModal)="closeModal()"></app-category-add-modal>
         </div>
     </section>
 
@@ -56,3 +55,5 @@
 
     <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </main>
+
+ <app-category-add-modal (categoryEmit)="categoryList()" [isOpen]="open" (closeModal)="closeModal()"></app-category-add-modal>

@@ -8,12 +8,12 @@
         <div class="modal-body">
             <label for="name">Nome</label>
             <div class="input-false-div">
-                <input type="text" id="name" placeholder="Nome">
+                <input type="text" id="name" placeholder="Nome" [(ngModel)]="category.name" required>
             </div>
 
             <div class="modal-footer">
                 <button id="btn-cancel" class="btn" (click)="close()">Cancelar</button>
-                <button id="btn-add" class="btn">Adicionar</button>
+                <button id="btn-add" class="btn" (click)="addCategory()" [disabled]="!category.name" >Adicionar</button>
             </div>
         </div>
     </div>

@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Product } from '../../interface/product';
 import { ProductService } from '../../services/product-service';
 import { MatPaginator } from '@angular/material/paginator';
 import { ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { filter } from 'rxjs';
+import { Router, NavigationEnd } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { NotificationService } from '../../services/notification-service';
 
 @Component({
   selector: 'app-product-list',
@@ -13,7 +16,7 @@ import { filter } from 'rxjs';
   styleUrl: './product-list.scss',
 
 })
-export class ProductList {
+export class ProductList implements OnInit, OnDestroy {
 
   products: Product[] = [];
   searchTerm: string = '';
@@ -23,18 +26,40 @@ export class ProductList {
   dataSource = new MatTableDataSource<Product>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private productService: ProductService) {
+  private routerSub!: Subscription;
 
+  constructor(private productService: ProductService, 
+    private router: Router,
+    private notificationService: NotificationService) {
+
+  }
+
+  isDeleteOpen = false;
+  selectedProduct!: Product;
+
+  openDeleteModal(product: Product) {
+    this.selectedProduct = product;
+    this.isDeleteOpen = true;
   }
 
   ngOnInit() {
 
     this.loadProducts();
 
+    this.routerSub = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
+      this.loadProducts();
+    });
+
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  ngOnDestroy() {
+    if (this.routerSub) {
+      this.routerSub.unsubscribe();
+    }
   }
 
   // loadProducts() {

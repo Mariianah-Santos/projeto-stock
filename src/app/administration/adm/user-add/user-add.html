@@ -10,30 +10,30 @@
             <label for="name">Nome</label>
             <div class="input-false-div">
                 <mat-icon class="user-mat">person</mat-icon>
-                <input type="text" id="name" placeholder="Nome">
+                <input type="text" id="name" placeholder="Nome" [(ngModel)]="responsible.name" required>
             </div>
 
             <label for="email">Email</label>
             <div class="input-false-div">
                 <mat-icon class="user-mat">email</mat-icon>
-                <input type="email" id="email" placeholder="email@gmail.com">
+                <input type="email" id="email" placeholder="email@gmail.com" required [(ngModel)]="responsible.email">
             </div>
 
             <label for="password">Senha</label>
             <div class="input-false-div">
                 <mat-icon class="user-mat">password</mat-icon>
-                <input type="password" id="password" placeholder="*******">
+                <input type="password" id="password" placeholder="*******" required minlength="6" [(ngModel)]="responsible.password">
             </div>
 
             <label for="tel">Telefone</label>
             <div class="input-false-div">
                 <mat-icon class="user-mat">call</mat-icon>
-                <input type="number" id="tel" placeholder="(xx)xxxxxxxx">
+                <input type="number" id="tel" placeholder="(xx)xxxxxxxx" required [(ngModel)]="responsible.telefone">
             </div>
 
             <div class="modal-footer">
                 <button id="btn-cancel" class="btn" (click)="close()">Cancelar</button>
-                <button id="btn-add" class="btn">Salvar</button>
+                <button id="btn-add" class="btn" (click)="addResponsible()">Salvar</button>
             </div>
         </div>
     </div>

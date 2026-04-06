@@ -58,7 +58,7 @@ export class Users {
       this.isFiltered = false;
     } else {
       this.dataSource.data = this.responsibles.filter(r => {
-        return r.name.toLocaleLowerCase().includes(term);
+        return r.name?.toLocaleLowerCase().includes(term);
       });
       this.isFiltered = true;
     }

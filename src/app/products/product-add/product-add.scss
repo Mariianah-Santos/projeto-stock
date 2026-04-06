@@ -103,6 +103,11 @@
             &:hover {
                 background-color: var.$success-hover;
             }
+
+            &:disabled {
+                background-color: var.$line;
+                cursor: not-allowed;
+            }
         }
 
         #product-cancel {

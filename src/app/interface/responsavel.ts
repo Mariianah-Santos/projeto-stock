@@ -1,8 +1,9 @@
 export interface Responsavel {
 
     id?: number,
-    name: string,
-    email: string,
-    telefone: number
-    active: boolean
+    name?: string,
+    password?: string,
+    email?: string,
+    telefone?: string,
+    active?: boolean
 }

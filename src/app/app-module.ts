@@ -68,7 +68,8 @@ import { Loaing } from './load/loaing/loaing';
     MatTooltipModule,
     MatPaginatorModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule
+
   ],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],

@@ -59,7 +59,7 @@ body {
 }
 
 .mat-mdc-paginator .mat-mdc-text-field-wrapper {
-    background-color: white !important;
+    background-color: var.$card !important;
 }
 
 .user-mat {
@@ -78,4 +78,19 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.snack-success .mdc-snackbar__surface {
+  background-color: var.$message-sucess !important;
+  color: var.$card !important;
+}
+
+.snack-success .mat-mdc-snack-bar-action,
+.snack-error .mat-mdc-snack-bar-action {
+  color: var.$card !important;
+}
+
+.snack-error .mdc-snackbar__surface {
+  background-color: #e31b0c !important;
+  color: var.$card !important;
 }

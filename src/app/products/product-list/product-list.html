@@ -43,8 +43,7 @@
                     <td  matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="{{product.responsible?.name}}"> {{ product.responsible?.name }} </td>
                     <td class="btn-action btn">
                         <mat-icon id="btn-edit" routerLink="/productEdit">edit</mat-icon>
-                        <mat-icon id="btn-delete" (click)="showModal()" routerLink="/productDelete">delete</mat-icon>
-                        <app-product-delete [isOpen]="open" (closeModal)="closeModal()"></app-product-delete>
+                        <mat-icon id="btn-delete" (click)="openDeleteModal(product)">delete</mat-icon>
                     </td>
                 </tr>
             </tbody>
@@ -64,3 +63,4 @@
     </section>
     <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </main>
+<app-product-delete   [isOpen]="isDeleteOpen" [product]="selectedProduct" (closeModal)="isDeleteOpen = false" (productDeleted)="loadProducts()"></app-product-delete>

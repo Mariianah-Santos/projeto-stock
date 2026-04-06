@@ -13,13 +13,13 @@
             <div class="box-input-info">
                 <label for="category">Categoria</label>
                 <div class="input-false-div">
-                    <select name="" id="" class="select">
-                        <option value="" disabled selected>Selecione uma categoria</option>
-                        <option *ngFor="let category of categorys" [(ngModel)]="category.id">
-                           {{ category.id }} - {{ category.name }}
+                    <select [(ngModel)]="product.category" class="select">
+                        <option [ngValue]="null" disabled>Selecione</option>
+
+                        <option *ngFor="let category of categorys" [ngValue]="{ id: category.id }">
+                            {{ category.id }} {{ category.name }}
                         </option>
-                    </select>
-                    <!-- <input type="" name="" id="category" placeholder="Qual a categoria do Produto"> -->
+                     </select>
                 </div>
             </div>
 
@@ -56,7 +56,7 @@
                     <div class="input-group">
                         <label for="price">Responsável</label>
                         <div class="input-false-div disabledDiv">
-                            <span>Mariana Gonçalo</span>
+                            <span> {{  user?.name  }} </span>
                         </div>
                     </div>
 
@@ -65,7 +65,7 @@
         </div>
 
         <div class="btn btn-footer-action">
-            <button id="product-add" routerLink="/" (click)="addProduct()">Adicionar</button>
+            <button id="product-add" routerLink="/" (click)="addProduct()" [disabled]="!product.name || !product.price || !product.quantity || !product.category">Adicionar</button>
             <button id="product-cancel" routerLink="/">Cancelar</button>
         </div>
     </div>
