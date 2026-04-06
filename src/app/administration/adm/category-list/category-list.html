@@ -34,7 +34,7 @@
                     <td> {{ category.name }} </td>
                     <td class="btn-action btn">
                         <mat-icon id="btn-edit">edit</mat-icon>
-                        <mat-icon id="btn-delete">delete</mat-icon>
+                        <mat-icon id="btn-delete" (click)="openDeleteModal(category)">delete</mat-icon>
                     </td>
                 </tr>
             </tbody>
@@ -57,3 +57,4 @@
 </main>
 
  <app-category-add-modal (categoryEmit)="categoryList()" [isOpen]="open" (closeModal)="closeModal()"></app-category-add-modal>
+ <app-category-delete [isOpen]="isDeleteOpen" [category]="selectedCategory" (closeModal)="isDeleteOpen = false" (categoryDeleted)="categoryList()"></app-category-delete>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { CategoryService } from '../../../services/category-service';
 import { Category } from '../../../interface/category';
 
@@ -12,7 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './category-list.html',
   styleUrl: './category-list.scss',
 })
-export class CategoryList {
+export class CategoryList implements OnInit, OnDestroy {
 
   categorys: Category[] = [];
   searchTerm: string = '';
@@ -22,16 +22,28 @@ export class CategoryList {
   dataSource = new MatTableDataSource<Category>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private categoryService:  CategoryService) {
+  constructor(private categoryService:  CategoryService, private cdr: ChangeDetectorRef) {
 
   }
+
+  selectedCategory!: Category;
+  isDeleteOpen = false;
 
   ngOnInit() {
     this.categoryList();
   }
 
+  ngOnDestroy() {
+    // Cleanup if needed
+  }
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  openDeleteModal(category: Category) {
+    this.selectedCategory = category;
+    this.isDeleteOpen = true;
   }
 
   categoryList() {
@@ -39,7 +51,8 @@ export class CategoryList {
       this.categorys = data;
       this.hasCategory = data.length > 0; 
       this.dataSource.data = data;
-
+      this.cdr.detectChanges();
+      
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;
       });
