@@ -42,7 +42,7 @@
                     <td> {{ product.dateCreate }} </td>
                     <td  matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="{{product.responsible?.name}}"> {{ product.responsible?.name }} </td>
                     <td class="btn-action btn">
-                        <mat-icon id="btn-edit" routerLink="/productEdit">edit</mat-icon>
+                        <mat-icon id="btn-edit" [routerLink]="['/productEdit', product.id]">edit</mat-icon>
                         <mat-icon id="btn-delete" (click)="openDeleteModal(product)">delete</mat-icon>
                     </td>
                 </tr>
