@@ -29,7 +29,8 @@ export class CategoryAddModal {
         this.close();
       },
       error: (err) => {
-        this.notificationService.error("Erro ao criar a categoria");
+        const msg = err.error?.message || err.error || "Erro ao criar a categoria";
+        this.notificationService.error(msg);
       }
 
     })

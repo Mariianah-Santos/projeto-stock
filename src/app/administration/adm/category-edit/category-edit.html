@@ -1,19 +1,19 @@
-<div class="main">
+<div class="main" *ngIf="isOpen">
     <div class="container-modal">
         <div class="modal-header">
             <h3>Editar Categoria</h3>
-            <span>X</span>
+            <span (click)="close()">X</span>
         </div>
 
         <div class="modal-body">
             <label for="name">Nome</label>
             <div class="input-false-div">
-                <input type="text" id="name" placeholder="Nome">
+                <input type="text" id="name" placeholder="Nome" [(ngModel)]="categoryEdit.name">
             </div>
 
             <div class="modal-footer">
-                <button id="btn-cancel" class="btn">Cancelar</button>
-                <button id="btn-add" class="btn">Salvar</button>
+                <button id="btn-cancel" (click)="close()" class="btn">Cancelar</button>
+                <button id="btn-add" class="btn" (click)="save()" [disabled]="!categoryEdit.name">Salvar</button>
             </div>
         </div>
     </div>

@@ -28,6 +28,7 @@ export class CategoryList implements OnInit, OnDestroy {
 
   selectedCategory!: Category;
   isDeleteOpen = false;
+  isEditOpen = false;
 
   ngOnInit() {
     this.categoryList();
@@ -44,6 +45,11 @@ export class CategoryList implements OnInit, OnDestroy {
   openDeleteModal(category: Category) {
     this.selectedCategory = category;
     this.isDeleteOpen = true;
+  }
+
+  openModalEdit(category: Category) {
+     this.selectedCategory = category;
+     this.isEditOpen = true;
   }
 
   categoryList() {
