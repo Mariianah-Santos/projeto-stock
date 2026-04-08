@@ -1,54 +1,80 @@
-# ProjetoEstoque
+Stock Manager - Frontend
+Este é o módulo de interface do sistema de gerenciamento de estoque, desenvolvido em Angular. A aplicação foi projetada para oferecer uma experiência de usuário fluida na gestão de produtos, categorias e controle de acesso.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.1.
+🚀 Tecnologias Utilizadas
+Framework: Angular (versão 17+)
 
-## Development server
+Linguagem: TypeScript
 
-To start a local development server, run:
+Estilização: CSS / SCSS
 
-```bash
+Comunicação API: HttpClient para consumo de serviços REST
+
+Gerenciamento de Estado/Fluxo: Services e RxJS (Observables)
+
+🛠️ Funcionalidades da Interface
+Painel de Autenticação: Tela de login estruturada para integração com JWT.
+
+Gestão Visual de Inventário: Listagem dinâmica de produtos com filtros e paginação.
+
+Formulários Reativos: Cadastro e edição de produtos e categorias com validações em tempo real.
+
+Navegação: Sistema de rotas protegidas (Guards) para garantir que apenas usuários autenticados acessem o estoque.
+
+Feedback ao Usuário: Tratamento de erros e mensagens de confirmação para operações de CRUD.
+
+📁 Estrutura do Projeto
+O projeto segue a estrutura padrão do Angular, organizada por módulos e componentes:
+
+src/app/components/: Componentes reutilizáveis da interface (tabelas, botões, modais).
+
+src/app/services/: Lógica de comunicação com o backend e compartilhamento de dados.
+
+src/app/models/: Interfaces e classes que definem o formato dos dados (Product, Category, User).
+
+src/app/pages/: Componentes que representam as páginas completas da aplicação.
+
+🚦 Como Executar Localmente
+Pré-requisitos
+Node.js (versão LTS recomendada)
+
+Angular CLI instalado globalmente:
+
+Bash
+npm install -g @angular/cli
+Instalação
+Clone o repositório:
+
+Bash
+git clone https://github.com/Mariianah-Santos/projeto-stock.git
+Acesse a pasta do projeto:
+
+Bash
+cd projeto-stock
+Instale as dependências:
+
+Bash
+npm install
+Execução
+Para iniciar o servidor de desenvolvimento, execute:
+
+Bash
 ng serve
-```
+Após o comando, a aplicação estará disponível em http://localhost:4200/.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+⚙️ Configuração da API
+Para que o frontend funcione corretamente, certifique-se de que o backend está rodando. Você pode configurar a URL base do servidor no arquivo:
+src/environments/environment.ts
 
-## Code scaffolding
+TypeScript
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8080/api' // Ajuste conforme sua porta backend
+};
+📝 Licença
+Este projeto é voltado para fins acadêmicos e desenvolvimento de portfólio.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
+Desenvolvido por Mariana Santos
 ng e2e
 ```
 
