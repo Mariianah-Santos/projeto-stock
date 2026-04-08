@@ -12,7 +12,7 @@ export class Loginservice {
 
   }
 
-  private apiUrlLogin = "http://localhost:8080/responsible/login";
+  private apiUrlLogin = "https://estoque-boux.onrender.com/responsible/login";
 
 
   auth(data: LoginRequest) {

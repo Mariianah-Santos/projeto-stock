@@ -12,7 +12,7 @@ export class CategoryService {
 
   }
 
-  private apiUrl = "http://localhost:8080/category";
+  private apiUrl = "https://estoque-boux.onrender.com/category";
 
   getAllCategory(): Observable<Category[]> {
     return this.http.get<Category[]>(this.apiUrl);

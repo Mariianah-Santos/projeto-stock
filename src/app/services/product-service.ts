@@ -10,7 +10,7 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  private apiUrl = 'http://localhost:8080/products';
+  private apiUrl = 'https://estoque-boux.onrender.com/products';
 
   getAllProduct(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl);

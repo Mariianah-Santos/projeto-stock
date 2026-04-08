@@ -8,7 +8,7 @@ import { Responsavel } from '../interface/responsavel';
 })
 export class ResponsibleService {
 
-  private apiUrl = 'http://localhost:8080/responsible';
+  private apiUrl = 'https://estoque-boux.onrender.com/responsible';
 
   constructor(private http: HttpClient) {
 
