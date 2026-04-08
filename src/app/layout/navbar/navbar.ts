@@ -32,7 +32,7 @@ export class Navbar implements OnInit {
   ngOnInit() {
     const user = this.loginService.getUser();
     this.userName = user?.name || user?.nome || user?.email || '';
-    this.perfilItems[0].label = `Seu Perfil${this.userName ? ` (${this.userName})` : ''}`;
+    this.perfilItems[0].label = `${this.userName ? ` (${this.userName})` : ''}`;
   }
 
   onDropdownItemClicked(item: DropdownItem) {

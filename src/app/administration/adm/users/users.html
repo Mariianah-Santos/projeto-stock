@@ -25,23 +25,25 @@
                     <th>Nome</th>
                     <th>Email</th>
                     <th>Telefone</th>
-                    <th>Ativo</th>
+                    <!-- <th>Ativo</th> -->
                     <th>Ações</th>
                 </tr>
             </thead>
 
             <tbody class="table-tbody">
-                <tr *ngFor="let responsible of dataSource.connect() | async">
+                <tr *ngFor="let responsible of dataSource.connect() | async; let i = index">
                     <td> {{ responsible.id }} </td>
                     <td matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="{{ responsible.name }}"> {{ responsible.name }} </td>
                     <td matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="{{ responsible.email }}">{{ responsible.email }}</td>
                     <td> {{ responsible.telefone }} </td>
-                    <td> {{ responsible.active }} </td>
+                    <!-- <td> {{ responsible.active ? 'Sim' : 'Não' }} </td> -->
                      <td class="btn-action btn">
-                        <button (click)="toggleDropdownImg()">
-                            <mat-icon class="more-vert">more_vert</mat-icon>
-                        </button>
-                        <app-dropdown [items]="perfilItems" class="dropdown-users"  [isOpen]="dropdownOpenImg"></app-dropdown>
+                        <div class="dropdown-wrapper">
+                            <button (click)="toggleDropdown(i)">
+                                <mat-icon class="more-vert">more_vert</mat-icon>
+                            </button>
+                            <app-dropdown [items]="perfilItems(responsible)" [isOpen]="openDropdownIndex === i" (itemClicked)="onDropdownItemClicked($event, responsible)"></app-dropdown>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -62,4 +64,5 @@
     <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </main>
 <app-user-add (userAdded)="showListResponsible()" [isOpen]="open" (closeModal)="closeModal()"></app-user-add>
-<app-user-edit [isOpen]="openEdit" (closeModal)="closeModalEdit()"></app-user-edit>
+<app-user-edit [isOpen]="openEdit" [responsible]="selectedUser" (closeModal)="closeEditModal()"></app-user-edit>
+<app-user-delete [responsible]="selectedUser" [isOpen]="isDeleteUser" (closeModal)="closeDeleteModal()"></app-user-delete>

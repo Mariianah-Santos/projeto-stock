@@ -1,12 +1,31 @@
-<div class="main">
+<div class="main" *ngIf="isOpen">
     <div class="container">
-    <div class="container-header">
-        <h2>Deseja realmente deletar o usuário?</h2>
-        <span>X</span>
-    </div>
+        <div class="container-header">
+            <h2>Deseja realmente deletar o usuário?</h2>
+            <span (click)="close()">X</span>
+        </div>
+
+        <div class="modal-body">
+                <table class="table-productList">
+                    <thead class="table-header">
+                        <tr id="tr-header">
+                            <th>ID</th>
+                            <th>Nome</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="table-tbody disabledDiv">
+                        <tr>
+                            <td> {{ responsible.id }} </td>
+                            <td> {{ responsible.name }} </td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+
         <div class="btn btn-action">
-            <button id="btn-cancel">Cancelar</button>
-            <button id="btn-del">Apagar</button>
+            <button id="btn-cancel" (click)="close()">Cancelar</button>
+            <button id="btn-del" (click)="deletar()">Apagar</button>
         </div>
     </div>
 </div>

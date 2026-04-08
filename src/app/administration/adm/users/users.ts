@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export interface DropdownItem {
   label: string;
   icon?: string;
+  action?: () => void;
 }
 
 @Component({
@@ -25,6 +26,8 @@ export class Users {
 
   dataSource = new MatTableDataSource<Responsavel>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  selectedUser!: Responsavel;
 
   constructor(private responsibleService: ResponsibleService) {
 
@@ -64,17 +67,60 @@ export class Users {
     }
   }
 
-  perfilItems: DropdownItem[] = [
-    { label: 'Editar', icon: 'edit' },
-    { label: 'Deleta', icon: 'delete'},
-    { label: 'Desativa', icon: 'check'}
-  ];
+  // perfilItems(responsible: Responsavel): DropdownItem[]  [
+  //   { label: 'Editar', icon: 'edit', action: () => this.openDeleteUser(responsible)},
+  //   { label: 'Deleta', icon: 'delete'},
+  //   // { label: 'Desativa', icon: 'check'}
+  // ];
+
+  perfilItems(responsible: Responsavel): DropdownItem[] {
+    return [
+      { label: 'Editar', icon: 'edit', action: () => this.openEditUser(responsible)},
+      { label: 'Deletar', icon: 'delete', action: () => this.openDeleteUser(responsible) },
+    ];
+  }
 
   open = false;
   openEdit = false;
   dropdownOpenImg = false;
-  toggleDropdownImg() {
-    this.dropdownOpenImg = !this.dropdownOpenImg;
+  openDropdownIndex: number | null = null;
+  isDeleteUser = false;
+  
+
+  // toggleDropdownImg() {
+  //   this.dropdownOpenImg = !this.dropdownOpenImg;
+  // }
+  toggleDropdown(index: number) {
+    this.openDropdownIndex = this.openDropdownIndex === index ? null : index;
+  }
+
+  openDeleteUser(responsible: Responsavel) {
+    this.selectedUser = responsible;
+    this.isDeleteUser = true;
+  }
+
+  onDropdownItemClicked(item: DropdownItem, responsible: Responsavel) {
+    if (item.action) {
+      item.action();
+    }
+    // Fechar o dropdown após clicar
+    this.openDropdownIndex = null;
+  }
+
+  closeDeleteModal() {
+    this.isDeleteUser = false;
+    // Recarregar a lista após deletar
+    this.showListResponsible();
+  }
+
+  closeEditModal() {
+    this.openEdit = false;
+    this.showListResponsible();
+  }
+
+  openEditUser(responsible: Responsavel) {
+    this.selectedUser = responsible;
+    this.openEdit = true;
   }
 
   showModal() {

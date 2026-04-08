@@ -69,7 +69,8 @@ export class ProductList implements OnInit, OnDestroy {
   // }
 
   loadProducts() {
-      this.productService.getAllProduct().subscribe(data => {
+    this.productService.getAllProduct().subscribe(data => {
+        console.log('Produtos:', JSON.stringify(data[0])); 
       this.products = data;
       this.hasProducts = data.length > 0;
       this.dataSource.data = data;

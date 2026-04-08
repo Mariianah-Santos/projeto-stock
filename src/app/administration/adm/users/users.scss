@@ -132,7 +132,7 @@
     border-radius: 20px;
     background-color: var.$card;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
+    // overflow: hidden;
 
     .table-productList {
         width: 100%;
@@ -207,12 +207,29 @@
 
 }
 
-.dropdown-users {
-  position: absolute;
-  right: 40px;
-  top: 350px;
+.btn-action {
+  position: relative;
+  text-align: center;
 }
 
+.dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-wrapper ::ng-deep .dropdown-menu {
+  top: 100%;
+  right: 0;
+}
+
+::ng-deep tbody tr,
+::ng-deep tbody td {
+  overflow: visible !important;
+}
+
+::ng-deep tbody {
+  overflow: visible !important;
+}
 
 .container-oculto {
     background-color: var.$card;

@@ -32,8 +32,8 @@
                 </tr>
             </thead>
 
-            <tbody class="table-tbody" *ngFor="let product of dataSource.connect() | async">
-                <tr>
+            <tbody class="table-tbody">
+                <tr *ngFor="let product of dataSource.connect() | async">
                     <td> {{ product.code }} </td>
                     <td matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="{{product.name}}"> {{ product.name }} </td>
                     <td> {{ product.category?.name }} </td>

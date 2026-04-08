@@ -3,6 +3,7 @@ import { LoginRequest } from '../../interface/login-request';
 import { Loginservice } from '../../services/loginservice';
 import { Router } from '@angular/router';
 import { finalize, timeout } from 'rxjs/operators';
+import { NotificationService } from '../../services/notification-service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { finalize, timeout } from 'rxjs/operators';
 })
 export class Login {
 
-  constructor(private loginService: Loginservice, private router: Router, private cdr: ChangeDetectorRef) {}
+  constructor(private loginService: Loginservice, private notificationService: NotificationService, private router: Router, private cdr: ChangeDetectorRef) {}
 
   loading = false;
   ngOnInit() {
@@ -35,12 +36,13 @@ export class Login {
       })
     ).subscribe({
       next: (res) => {
-        console.log('Login OK', res);
+        this.notificationService.sucess("Bem-vindo de volta!")
         localStorage.setItem('user', JSON.stringify(res));
         this.router.navigate(["/"]);
       },
       error: (err) => {
-        console.log("erro ao fazer login", err.error);
+        const msg = err.error?.message || err.error || "Erro ao entrar. Por favor tente novamente";
+        this.notificationService.error(msg);
       }
     });
   }
