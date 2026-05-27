@@ -8,7 +8,7 @@ export interface Product {
     name: string,
     category?: Category,
     quantity: number,
-    price: number,
+    price?: number,
     dateCreate?: Date,
     responsible?: Responsavel
 }

@@ -1,0 +1,57 @@
+<main class="main">
+    <section class="section-1-header">
+        <h3>Meus Pedidos</h3>
+        <div class="btn-header">
+            <div class="search-group">
+                <div class="input-false-div">
+                    <input type="text" placeholder="Pesquisar Produto" [(ngModel)]="searchTerm">
+                </div>
+
+                <button class="btn-search btn" (click)="filterProduct()">Buscar</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-2-table">
+        <table class="table-productList">
+            <thead class="table-header">
+                <tr id="tr-header">
+                    <th>Id</th>
+                    <th>Produto</th>
+                    <th>Responsável</th>
+                    <th>Unidade</th>
+                    <th>Status</th>
+                    <th>Data de Criação</th>
+                </tr>
+            </thead>
+
+            <tbody class="table-tbody">
+                <tr *ngFor="let solicitation of dataSource.connect() | async">
+                    <td> {{ solicitation.id }} </td>
+                    <td> {{ solicitation.product.name }} </td>
+                    <td> {{ solicitation.responsible.name }} </td>
+                    <td> {{ solicitation.quantity }} </td>
+                    <td> 
+                        <span [ngClass]="getStatusClass(solicitation.status)">
+                            {{ getStatusLabel(solicitation.status) }} 
+                        </span>
+                    </td>
+                    <td> {{ solicitation.createSolicition }} </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section class="container-oculto" *ngIf="!hasProducts">
+        <div class="box-oculto">
+            <h3>As solicitações digital está vazia no momento</h3>
+            <p>Faça solicitações para começar a gerenciar seu estoque</p>
+        </div>
+    </section>
+
+    <section class="container-pesquisa container-oculto" *ngIf="dataSource.data.length === 0 && isFiltered">
+        <div class="box-oculto">
+            <h3>Não encontrado na Lista</h3>
+        </div>
+    </section>
+    <!-- <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
+</main>

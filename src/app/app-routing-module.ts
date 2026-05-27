@@ -16,6 +16,8 @@ import { CategoryEdit } from './administration/adm/category-edit/category-edit';
 import { CategoryDelete } from './administration/adm/category-delete/category-delete';
 import { Login } from './auth/login/login';
 import { authGuardGuard } from './authGuard/auth-guard-guard';
+import { SolicitationList } from './solicitation-list/solicitation-list';
+import { SolicitationResponsible } from './solicitation-responsible/solicitation-responsible';
 
 const routes: Routes = [ 
 
@@ -94,6 +96,14 @@ const routes: Routes = [
       {
         path: 'productEdit/:id',
         component: ProductEdit
+      },
+      {
+        path: 'solicitationlist',
+        component: SolicitationList
+      },
+      {
+        path: 'yourSolicitation',
+        component: SolicitationResponsible
       }
     ]
   }

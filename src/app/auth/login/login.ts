@@ -35,9 +35,10 @@ export class Login {
         this.cdr.detectChanges();
       })
     ).subscribe({
-      next: (res) => {
+      next: (res: any) => {
         this.notificationService.sucess("Bem-vindo de volta!")
         localStorage.setItem('user', JSON.stringify(res));
+        localStorage.setItem('token', res.token);
         this.router.navigate(["/"]);
       },
       error: (err) => {

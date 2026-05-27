@@ -4,6 +4,7 @@ import { Responsavel } from '../../../interface/responsavel';
 import { MatPaginator } from '@angular/material/paginator';
 import { ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Loginservice } from '../../../services/loginservice';
 
 export interface DropdownItem {
   label: string;
@@ -29,7 +30,7 @@ export class Users {
 
   selectedUser!: Responsavel;
 
-  constructor(private responsibleService: ResponsibleService) {
+  constructor(private responsibleService: ResponsibleService, private loginService: Loginservice) {
 
   }
 
@@ -137,5 +138,9 @@ export class Users {
 
   showModalEdit() {
     this.openEdit = true;
+  }
+
+  checkAdmin(): boolean {
+    return this.loginService.isAdmin();
   }
 }

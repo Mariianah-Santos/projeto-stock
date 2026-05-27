@@ -12,7 +12,7 @@
             
             <div class="btn-header-productList">
                 <!-- <button class="btn-filter btn"><mat-icon>filter_list</mat-icon> Filtros</button> -->
-                <button class="btn-add btn" routerLink="/productAdd"><mat-icon>add</mat-icon>Adicionar</button>
+                <button class="btn-add btn" *ngIf="checkAdmin()" routerLink="/productAdd"><mat-icon>add</mat-icon>Adicionar</button>
             </div>
         </div>
     </section>
@@ -25,7 +25,7 @@
                     <th>Nome</th>
                     <th>Categoria</th>
                     <th>Unidade</th>
-                    <th>Preço</th>
+                    <!-- <th>Preço</th> -->
                     <th>Data de Criação</th>
                     <th>Responsável</th>
                     <th>Ações</th>
@@ -38,12 +38,13 @@
                     <td matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="{{product.name}}"> {{ product.name }} </td>
                     <td> {{ product.category?.name }} </td>
                     <td> {{ product.quantity }} </td>
-                    <td> R$ {{ product.price }} </td>
+                    <!-- <td> R$ {{ product.price }} </td> -->
                     <td> {{ product.dateCreate }} </td>
                     <td  matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="{{product.responsible?.name}}"> {{ product.responsible?.name }} </td>
                     <td class="btn-action btn">
-                        <mat-icon id="btn-edit" [routerLink]="['/productEdit', product.id]">edit</mat-icon>
-                        <mat-icon id="btn-delete" (click)="openDeleteModal(product)">delete</mat-icon>
+                        <mat-icon id="btn-edit" *ngIf="checkAdmin()" [routerLink]="['/productEdit', product.id]">edit</mat-icon>
+                        <mat-icon id="btn-delete" *ngIf="checkAdmin()" (click)="openDeleteModal(product)">delete</mat-icon>
+                        <mat-icon id="btn-solicit" matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="Faça sua solicitação" (click)="openSolicitationModal(product)">add</mat-icon>
                     </td>
                 </tr>
             </tbody>
@@ -63,4 +64,5 @@
     </section>
     <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </main>
-<app-product-delete [isOpen]="isDeleteOpen" [product]="selectedProduct" (closeModal)="isDeleteOpen = false" (productDeleted)="loadProducts()"></app-product-delete>
+<app-product-delete [isOpen]="isDeleteOpen" [product]="selectedProduct!" (closeModal)="isDeleteOpen = false" (productDeleted)="loadProducts()"></app-product-delete>
+<app-solicitacion [isOpen]="isSolicitationOpen" [product]="selectedProduct" (closeModal)="isSolicitationOpen = false"></app-solicitacion>

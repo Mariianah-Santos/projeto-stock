@@ -12,7 +12,7 @@
             
             <div class="btn-header-productList">
                 <!-- <button class="btn-filter btn"><mat-icon>filter_list</mat-icon> Filtros</button> -->
-                <button class="btn-add btn" routerLink="/userAdd" (click)="showModal()"><mat-icon>person_add</mat-icon>Adicionar</button>
+                <button class="btn-add btn" *ngIf="checkAdmin()" routerLink="/userAdd" (click)="showModal()"><mat-icon>person_add</mat-icon>Adicionar</button>
             </div>
         </div>
     </section>
@@ -26,7 +26,7 @@
                     <th>Email</th>
                     <th>Telefone</th>
                     <!-- <th>Ativo</th> -->
-                    <th>Ações</th>
+                    <th *ngIf="checkAdmin()">Ações</th>
                 </tr>
             </thead>
 
@@ -37,7 +37,7 @@
                     <td matTooltipClass="tooltip-productList" matTooltipPosition="above" matTooltip="{{ responsible.email }}">{{ responsible.email }}</td>
                     <td> {{ responsible.telefone }} </td>
                     <!-- <td> {{ responsible.active ? 'Sim' : 'Não' }} </td> -->
-                     <td class="btn-action btn">
+                     <td class="btn-action btn" *ngIf="checkAdmin()">
                         <div class="dropdown-wrapper">
                             <button (click)="toggleDropdown(i)">
                                 <mat-icon class="more-vert">more_vert</mat-icon>

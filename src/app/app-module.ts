@@ -39,6 +39,12 @@ import { FormsModule } from '@angular/forms';
 import { Login } from './auth/login/login';
 import { Loaing } from './load/loaing/loaing';
 
+import { authInterceptorInterceptor } from './auth-interceptor-interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Solicitacion } from './solicitacion/solicitacion';
+import { SolicitationList } from './solicitation-list/solicitation-list';
+import { SolicitationResponsible } from './solicitation-responsible/solicitation-responsible';
+
 @NgModule({
   declarations: [
     App,
@@ -58,6 +64,9 @@ import { Loaing } from './load/loaing/loaing';
     CategoryList,
     Login,
     Loaing,
+    Solicitacion,
+    SolicitationList,
+    SolicitationResponsible,
   ],
   imports: [
     BrowserModule,
@@ -68,10 +77,16 @@ import { Loaing } from './load/loaing/loaing';
     MatTooltipModule,
     MatPaginatorModule,
     HttpClientModule,
-    FormsModule
-
+    FormsModule,
   ],
-  providers: [provideBrowserGlobalErrorListeners()],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: authInterceptorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [App],
 })
 export class AppModule {}

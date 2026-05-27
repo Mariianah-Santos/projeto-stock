@@ -8,6 +8,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { NotificationService } from '../../services/notification-service';
+import { Loginservice } from '../../services/loginservice';
 
 @Component({
   selector: 'app-product-list',
@@ -30,16 +31,22 @@ export class ProductList implements OnInit, OnDestroy {
 
   constructor(private productService: ProductService, 
     private router: Router,
-    private notificationService: NotificationService) {
+    private notificationService: NotificationService, private loginService: Loginservice) {
 
   }
 
   isDeleteOpen = false;
+  isSolicitationOpen = false;
   selectedProduct!: Product;
 
   openDeleteModal(product: Product) {
     this.selectedProduct = product;
     this.isDeleteOpen = true;
+  }
+
+  openSolicitationModal(product: Product) {
+    this.selectedProduct = product;
+    this.isSolicitationOpen = true;
   }
 
   ngOnInit() {
@@ -103,5 +110,9 @@ export class ProductList implements OnInit, OnDestroy {
 
   showModal() {
     this.open = true;
+  }
+
+  checkAdmin(): boolean {
+    return this.loginService.isAdmin();
   }
 }

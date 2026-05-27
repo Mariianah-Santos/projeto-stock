@@ -5,6 +5,7 @@ import { Category } from '../../../interface/category';
 import { MatPaginator } from '@angular/material/paginator';
 import { ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Loginservice } from '../../../services/loginservice';
 
 @Component({
   selector: 'app-category-list',
@@ -22,7 +23,7 @@ export class CategoryList implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource<Category>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private categoryService:  CategoryService, private cdr: ChangeDetectorRef) {
+  constructor(private categoryService:  CategoryService, private cdr: ChangeDetectorRef, private loginService: Loginservice) {
 
   }
 
@@ -87,5 +88,9 @@ export class CategoryList implements OnInit, OnDestroy {
 
   closeModal() {
     this.open = false;
+  }
+
+  checkAdmin(): boolean {
+    return this.loginService.isAdmin();
   }
 }

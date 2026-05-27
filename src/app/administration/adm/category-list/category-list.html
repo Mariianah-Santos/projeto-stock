@@ -12,7 +12,7 @@
             
             <div class="btn-header-productList">
                 <!-- <button class="btn-filter btn"><mat-icon>filter_list</mat-icon> Filtros</button> -->
-                <button class="btn-add btn" (click)="showModal()"><mat-icon>add</mat-icon>Adicionar</button>
+                <button class="btn-add btn" *ngIf="checkAdmin()" (click)="showModal()"><mat-icon>add</mat-icon>Adicionar</button>
             </div>
 
         </div>
@@ -24,7 +24,7 @@
                 <tr id="tr-header">
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>Ação</th>
+                    <th *ngIf="checkAdmin()">Ação</th>
                 </tr>
             </thead>
 
@@ -32,9 +32,9 @@
                 <tr  *ngFor="let category of dataSource.connect() | async">
                     <td> {{ category.id }} </td>
                     <td> {{ category.name }} </td>
-                    <td class="btn-action btn">
-                        <mat-icon id="btn-edit" (click)="openModalEdit(category)">edit</mat-icon>
-                        <mat-icon id="btn-delete" (click)="openDeleteModal(category)">delete</mat-icon>
+                    <td class="btn-action btn" *ngIf="checkAdmin()">
+                        <mat-icon id="btn-edit" *ngIf="checkAdmin()" (click)="openModalEdit(category)">edit</mat-icon>
+                        <mat-icon id="btn-delete" *ngIf="checkAdmin()"  (click)="openDeleteModal(category)">delete</mat-icon>
                     </td>
                 </tr>
             </tbody>

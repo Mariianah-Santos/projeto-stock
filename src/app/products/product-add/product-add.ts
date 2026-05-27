@@ -42,7 +42,7 @@ export class ProductAdd {
 
     const payload = {
       name: this.product.name,
-      price: this.product.price,
+      //price: this.product.price,
       quantity: this.product.quantity,
       dateCreate: this.product.dateCreate,
       categoryId: this.product.category?.id,

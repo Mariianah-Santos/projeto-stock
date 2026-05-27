@@ -132,3 +132,30 @@ input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+input[type="radio"] {
+    width: 16px !important;
+    height: 16px !important;
+    transform: scale(0.8) !important;
+    cursor: pointer !important;
+    accent-color: var.$BlueDark !important;
+}
+
+.persmission-div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: auto !important;
+    padding: 10px 0;
+}
+
+.permission-item {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+.permission {
+    width: auto !important;
+    margin: 0;
+}

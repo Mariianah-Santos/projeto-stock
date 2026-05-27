@@ -33,12 +33,12 @@
                         </div>
                     </div>
 
-                    <div class="input-group">
+                    <!-- <div class="input-group">
                         <label for="price">Preço <span id="priceSpan">R$</span></label>
                         <div class="input-false-div">
                             <input type="number" [(ngModel)]="product.price" id="price" placeholder="Digite o preço do Produto">
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -65,7 +65,7 @@
         </div>
 
         <div class="btn btn-footer-action">
-            <button id="product-add" routerLink="/" (click)="addProduct()" [disabled]="!product.name || !product.price || !product.quantity || !product.category">Adicionar</button>
+            <button id="product-add" routerLink="/" (click)="addProduct()" [disabled]="!product.name || !product.quantity || !product.category">Adicionar</button>
             <button id="product-cancel" routerLink="/">Cancelar</button>
         </div>
     </div>

@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Loginservice } from '../../services/loginservice';
+import { Responsavel } from '../../interface/responsavel';
 
 export interface DropdownItem {
   label: string;
@@ -19,6 +20,8 @@ export class Navbar implements OnInit {
     { label: 'Seu Perfil', icon: 'person' },
     { label: 'Sair', icon: 'logout' }
   ];
+
+  responsible: Responsavel[] = [];
 
   dropdownOpenImg = false;
   userName = '';
@@ -48,6 +51,10 @@ export class Navbar implements OnInit {
       if (!this.el.nativeElement.contains(event.target)) {
         this.dropdownOpenImg = false;
       }
+    }
+
+    checkAdmin(): boolean {
+      return this.loginService.isAdmin();
     }
 
 }

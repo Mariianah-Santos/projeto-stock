@@ -11,6 +11,8 @@
         <li class="hover-item"><a routerLink="/adm/users">Administração</a></li>
         <!-- <li class="hover-item"><a routerLink="/log">Log</a></li> -->
         <li class="hover-item"><a routerLink="/">Produtos</a></li>
+        <li class="hover-item" *ngIf="checkAdmin()"><a routerLink="/solicitationlist">Solicitações</a></li>
+        <li class="hover-item"><a routerLink="/yourSolicitation">Meus Pedidos</a></li>
     </ul>
 
     <div class="headerBar-perfil"  (click)="toggleDropdownImg()">

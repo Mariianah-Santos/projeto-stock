@@ -5,5 +5,6 @@ export interface Responsavel {
     password?: string,
     email?: string,
     telefone?: string,
-    active?: boolean
+    active?: boolean,
+    role?: string
 }

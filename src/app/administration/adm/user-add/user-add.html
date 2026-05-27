@@ -31,6 +31,21 @@
                 <input type="number" id="tel" placeholder="(xx)xxxxxxxx" required [(ngModel)]="responsible.telefone">
             </div>
 
+            <label>Permissão:</label>
+            <div class="input-false-div persmission-div">
+                <div class="permission-item">
+                    <mat-icon class="user-mat persmission">admin_panel_settings</mat-icon>
+                    <label class="permission" for="admin">Administrador da Plataforma</label>
+                    <input type="radio" id="admin" name="role" value="ADMIN" [(ngModel)]="responsible.role">
+                </div>
+
+                <div class="permission-item">
+                    <mat-icon class="user-mat persmission">person</mat-icon>
+                    <label class="permission" for="user">Usuário comum</label>
+                    <input type="radio" id="user" name="role" value="USER" [(ngModel)]="responsible.role">
+                </div>
+            </div>
+
             <div class="modal-footer">
                 <button id="btn-cancel" class="btn" (click)="close()">Cancelar</button>
                 <button id="btn-add" class="btn" (click)="addResponsible()">Salvar</button>
