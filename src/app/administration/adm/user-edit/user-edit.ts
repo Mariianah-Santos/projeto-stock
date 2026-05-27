@@ -15,14 +15,25 @@ export class UserEdit {
 
   @Input() isOpen = false;
   @Output() closeModal = new EventEmitter<void>();
-  @Input() responsible!: Responsavel;
+  // @Input() responsible!: Responsavel;
+
+  private _responsible!: Responsavel;
+
+@Input() set responsible(value: Responsavel) {
+  this._responsible = { ...value, password: '' }; // ← limpa a senha
+}
+
+get responsible(): Responsavel {
+  return this._responsible;
+}
+
 
   close() {
     this.closeModal.emit();
   }
 
   save() {
-    this.responsibleService.updateResponsible(this.responsible.id!, this.responsible).subscribe({
+    this.responsibleService.updateResponsible(this._responsible.id!, this._responsible).subscribe({
       next: (res) => {
         this.notificationService.sucess("Usuário editado com sucesso");
         this.close();
@@ -33,5 +44,4 @@ export class UserEdit {
       }
     })
   }
-
 }
