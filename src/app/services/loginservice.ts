@@ -32,4 +32,17 @@ export class Loginservice {
     localStorage.removeItem('user');
   }
 
+  getRole(): string {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user.role || '';
+  }
+
+  isAdmin(): boolean {
+    return this.getRole() === 'ADMIN';
+  }
+
+  isUser(): boolean {
+    return this.getRole() === 'USER';
+  }
+
 }
